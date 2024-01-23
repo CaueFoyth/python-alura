@@ -10,7 +10,7 @@ def exibir_nome_prgrama():
 def exibir_opcoes():
     print("1. Cadastrar restaurante")
     print("2. Listar restaurantes")
-    print("3. Ativar restaurante")
+    print("3. Alterar estado do restaurante")
     print("4. Sair")
 
 def finaliza_app():
@@ -26,7 +26,10 @@ def opcao_invalida():
 
 def exibir_subtitulos(texto):
     os.system("cls")
+    linha = "*" * len(texto)
+    print(linha)
     print(texto)
+    print(linha)
     print()
 
 def cadastrar_novo_restaurante():
@@ -42,11 +45,16 @@ def cadastrar_novo_restaurante():
 def listar_restaurantes():
     exibir_subtitulos("Restaurantes cadastrados")
 
+    # ljust serve para definir espaços no terminal
+    print(f"{"Nome do restaurante".ljust(22)} | {"Categoria".ljust(20)} | {"Status"}")
     for restaurante in restaurantes:
         nome_restaurante = restaurante["nome"]
         categoria = restaurante["categoria"]
-        ativo = restaurante["ativo"]
-        print(f"- {nome_restaurante} | {categoria} | {ativo}")
+
+        # if ternário
+        ativo = "Ativado" if restaurante["ativo"] else "Desativado"
+
+        print(f"- {nome_restaurante.ljust(20)} | {categoria.ljust(20)} | {ativo}")
 
     voltar_ao_menu_principal()
 
