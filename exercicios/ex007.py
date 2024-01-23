@@ -11,6 +11,7 @@ for pessoa in pessoas:
 print(pessoas)
 
 # Adicione um campo de profissão para essa pessoa;
-
+pessoa['profissao'] = 'Engenheiro'
 
 # Remova um item do dicionário.
+del pessoa['cidade']
