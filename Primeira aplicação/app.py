@@ -1,5 +1,6 @@
 import os
 
+# Aplicativo para administração de restaurantes
 restaurantes = [{"nome":"Praça", "categoria":"Japonesa", "ativo":False}, 
                 {"nome":"Pizza Suprema", "categoria":"Pizza", "ativo":True},
                 {"nome":"Cantina", "categoria":"Italiana", "ativo":False}]
