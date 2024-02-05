@@ -1,4 +1,5 @@
 from modelos.avaliacao import Avaliacao
+from modelos.cardapio.item_cardapio import ItemCardapio
 
 class Restaurante:
     restaurantes = []
@@ -11,6 +12,7 @@ class Restaurante:
         # _ Para não ser acessado direto, só por método para alterar
         self._ativo = False
         self._avaliacao = []
+        self._cardapio = []
         Restaurante.restaurantes.append(self)
 
     def __str__(self):
@@ -44,3 +46,21 @@ class Restaurante:
         qtd_notas = len(self._avaliacao)
         media = round(soma_das_notas / qtd_notas, 1)
         return media
+    
+    def adicionar_no_cardapio(self, item):
+        # Se o item for uma instancia no ItemCardapio
+        if isinstance(item, ItemCardapio):
+            self._cardapio.append(item)
+
+    @property
+    def exibir_cardapio(self):
+        print(f'Cardapio do restaurante {self._nome}\n')
+
+        # Fazer uma lista para o cardapio do restaurante
+        for i,item in enumerate(self._cardapio, start= 1):
+            if hasattr(item, 'descricao'):
+                mensagem_prato = f'{i}. Nome: {item._nome} | Preço: R${item._preco} | Descrição: {item.descricao}'
+                print(mensagem_prato)
+            else:
+                mensagem_bebida = f'{i}. Nome: {item._nome} | Preço: R${item._preco} | Tamanho: {item.tamanho}'
+                print(mensagem_bebida)
